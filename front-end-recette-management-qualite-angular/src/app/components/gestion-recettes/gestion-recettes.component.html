@@ -1,0 +1,97 @@
+<div class="wrapper">
+
+<app-navbar></app-navbar>
+<br/>
+<div class="container">
+  <div class="alert alert-success" role="alert" *ngIf="recetteSuccess">
+    <h4 class="alert-heading">Félicitations vous avez bien {{ showAddFormFlag ? 'ajouté' : 'modifié' }} recette</h4>
+  </div>
+  <button class="btn btn-primary" (click)="showAddForm()">
+    <i class="fa-solid fa-plus"></i>
+  </button>
+  <div *ngIf="showAddFormFlag || showEditFormFlag">
+    <form (ngSubmit)="submitForm()" #form="ngForm">
+      <div class="form-group">
+        <label for="nom">Nom:</label>
+        <input type="text" class="form-control" id="nom" required [(ngModel)]="newRecette.nom" name="nom">
+      </div>
+
+      <div class="form-group">
+        <label for="description">Description:</label>
+        <textarea class="form-control" id="description" required [(ngModel)]="newRecette.description" name="description"></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="duree">Durée:</label>
+        <input type="number" class="form-control" id="duree" required [(ngModel)]="newRecette.duree" name="duree">
+      </div>
+      <div class="form-group">
+        <label for="vehicule">Type:</label>
+        <select class="form-control" id="type" required [(ngModel)]="newRecette.typeRecette" name="type">
+          <option *ngFor="let type of types" [ngValue]="type">{{ type.libelle ||' ' }}</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="image">Image:</label>
+        <input type="text" class="form-control" id="image" [(ngModel)]="newRecette.image" name="image">
+      </div>
+
+      <button type="submit" class="btn btn-success">{{ showAddFormFlag ? 'Ajouter' : 'Mettre à jour' }}</button>
+      <button type="button" class="btn btn-secondary" (click)="cancelForm()">Annuler</button>
+    </form>
+</div>
+  <table class="table">
+
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nom</th>
+        <th>Description</th>
+        <th>Durée (min)</th>
+        <th>Image</th>
+        <th>Ingredients</th>
+        <th>Etapes</th>
+        <th>Type</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let recette of recettes">
+        <td>{{ recette.id }}</td>
+        <td>{{ recette.nom }}</td>
+        <td>{{ recette.description }}</td>
+
+        <td>{{ recette.duree }}</td>
+        <td>
+          <img [src]="recette.image" alt="{{ recette.nom }}" style="max-width: 50px; max-height: 50px;">
+        </td>
+<td>
+  <ul>
+    <li *ngFor="let ingredient of recette.ingredients">{{ ingredient.quantite }} {{ ingredient.unite }} {{ ingredient.nom }}</li>
+  </ul>
+</td>
+<td>
+  <ol>
+    <li *ngFor="let etape of recette.etapes">{{ etape.description }} dans : <strong>{{ etape.duree }} min</strong></li>
+  </ol>
+</td>
+
+        <td>{{ recette.typeRecette.libelle }}</td>
+
+        <td>
+
+          <button class="btn btn-danger" (click)="deleteRecette(recette)">
+            <i class="fa-solid fa-trash"></i>
+          </button>
+          <button class="btn btn-warning" (click)="editRecette(recette)">
+            <i class="fa-solid fa-pencil"></i>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+<br/>
+</div>
+</div>
+<app-footer></app-footer>

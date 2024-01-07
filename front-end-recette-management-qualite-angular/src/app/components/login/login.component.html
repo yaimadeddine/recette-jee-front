@@ -1,0 +1,21 @@
+<div class="background-image">
+  <main class="box">
+    <h2>Login</h2>
+    <form>
+      <div class="inputBox">
+        <label for="email">Email</label>
+        <input type="text" name="email" id="email" placeholder="Type your email" [(ngModel)]="user.email" required />
+      </div>
+      <div class="inputBox">
+        <label for="userPassword">Password</label>
+        <input type="password" name="userPassword" id="userPassword" placeholder="Type your password" [(ngModel)]="user.password" required />
+      </div>
+
+      <button type="submit" (click)="redirectToGestionRecettes()" style="float: left;">Submit</button>
+      <a class="button" [routerLink]="'/register'" style="float: left;">Register</a>
+      <a class="button" [routerLink]="'/recettes'" style="float: left;">Visitor</a>
+
+    </form>
+  </main>
+  </div>
+  <footer></footer>

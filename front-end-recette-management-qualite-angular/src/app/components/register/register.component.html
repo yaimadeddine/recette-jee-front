@@ -1,0 +1,33 @@
+
+
+<div class="background-image">
+  <main class="box">
+    <h2>Register</h2>
+    <form (ngSubmit)="register()">
+      <div class="inputBox">
+        <label for="email">Email</label>
+        <input type="text" name="email" id="email" placeholder="Type your email" [(ngModel)]="user.email" required />
+      </div>
+      <div class="inputBox">
+        <label for="nom">Nom</label>
+        <input type="text" name="nom" id="nom" placeholder="Type your last name" [(ngModel)]="user.nom" required />
+      </div>
+      <div class="inputBox">
+        <label for="prenom">Prénom</label>
+        <input type="text" name="prenom" id="prenom" placeholder="Type your first name" [(ngModel)]="user.prenom" required />
+      </div>
+      <div class="inputBox">
+        <label for="userPassword">Password</label>
+        <input type="password" name="userPassword" id="userPassword" placeholder="Type your password" [(ngModel)]="user.password" required />
+      </div>
+
+      <div>
+        <button type="submit" style="float: left;">Submit</button>
+        <a class="button" [routerLink]="'/login'" style="float: left;">Login</a>
+        <a class="button" [routerLink]="'/recettes'" style="float: left;">Visitor</a>
+      </div>
+    </form>
+  </main>
+</div>
+<footer></footer>
+

@@ -1,0 +1,64 @@
+<app-navbar></app-navbar>
+
+<div class="container">
+
+  <div class="info-before-recettes">
+    <div class="jumbotron">
+      <h1 class="display-4">Explorez le monde culinaire avec nos délicieuses recettes!</h1>
+      <p class="lead">Laissez-vous emporter par le plaisir de cuisiner et créez des saveurs inoubliables.</p>
+      <hr class="my-4">
+    </div>
+  </div>
+  <div class="types-container row">
+    <div *ngFor="let type of types" class="type-card col-md-2">
+      <img style="height: 50px;width: 50px;" [src]="type.image" alt="{{ type.libelle }}" class="type-image">
+      <h6>{{ type.libelle }}</h6>
+    </div>
+  </div>
+
+
+  <div class="row">
+    <div *ngFor="let recette of recettes; let i = index" class="col-md-4">
+      <div class="card">
+        <img style="height: 150px; width: 100%;" [src]="recette.image" alt="{{ recette.nom }}" class="card-img-top">
+        <div class="card-body">
+          <h5 class="card-title"><strong>{{recette.nom}}</strong></h5>
+          <p class="card-text">{{recette.duree}} min</p>
+          <p class="card-text"><strong>Chef:</strong> {{ chefs[i].nom }} {{ chefs[i].prenom }}</p>
+          <a [routerLink]="['/recette', recette.ref]" class="btn btn-primary">Details</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="info-after-recettes mt-5">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="alert alert-success" role="alert">
+          <h4 class="alert-heading">Félicitations!</h4>
+          <p>Vous êtes sur le point de vivre une expérience culinaire extraordinaire. Essayez dès maintenant!</p>
+          <hr>
+          <p class="mb-0">Besoin d'aide? Notre équipe est là pour vous.</p>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Newsletter</h5>
+            <p class="card-text">Inscrivez-vous à notre newsletter pour recevoir les dernières recettes et actualités culinaires.</p>
+            <form>
+              <div class="form-group">
+                <input type="email" class="form-control" id="email" placeholder="Votre adresse e-mail">
+              </div>
+              <br/>
+              <button type="submit" class="btn btn-primary">S'inscrire</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<br/>
+<app-footer></app-footer>

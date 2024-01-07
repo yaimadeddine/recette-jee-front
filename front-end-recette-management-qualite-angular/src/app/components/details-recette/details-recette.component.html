@@ -1,0 +1,35 @@
+<div class="wrapper">
+
+<app-navbar></app-navbar>
+<br/>
+<div class="container">
+  <div *ngIf="recette" class="recette-container">
+    <div class="image-container">
+      <img [src]="recette.image" alt="Image du recette">
+    </div>
+
+    <div class="text-container">
+      <h2>{{ recette.nom }} ({{ recette.duree }} min)</h2>
+      <p>{{ recette.description }}</p>
+
+      <p> <strong>Categorie : </strong> {{ recette.typeRecette.libelle }} </p>
+      <p> <strong>Ingredients : </strong> </p>
+      <div *ngFor="let ingredient of recette.ingredients" class="col-md-4">
+        <p>&#x2022; {{ ingredient.quantite }} {{ ingredient.unite }} {{ ingredient.nom }}</p>
+      </div>
+
+      <p> <strong>Etapes : </strong> </p>
+      <div *ngFor="let etape of recette.etapes" class="col-md-4">
+        <p>&#x2022; {{ etape.description }} dans : <strong>{{ etape.duree }} min</strong></p>
+
+      </div>
+
+
+    </div>
+  </div>
+</div>
+<br/>
+
+<app-footer></app-footer>
+</div>
+
