@@ -39,4 +39,9 @@ export class RecetteService {
     console.log(newRecette);
     return this.http.post<Recette>(this.apiUrl, newRecette);
   }
+
+  saveRecette(recette: Recette): Observable<number> {
+    const url = `${this.apiUrl}/save`;
+    return this.http.post<number>(url, recette);
+  }
 }

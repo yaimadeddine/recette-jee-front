@@ -14,6 +14,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { CloudinaryModule } from '@cloudinary/ng';
 import { FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import {FileUploadModule} from "ng2-file-upload";
 
 @NgModule({
   declarations: [
@@ -32,11 +33,11 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     HttpClientModule,
     CloudinaryModule,
     FormsModule,
-    NgbModule
-
+    NgbModule,
+    FileUploadModule
 
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}
